@@ -1,6 +1,6 @@
 #!groovy
 
-library 'integrations-pipeline@70-override-pipeline'
+@Library('integrations-pipeline@70-override-pipeline') _
 
 pipeline {
   agent {
