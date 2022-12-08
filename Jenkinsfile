@@ -21,7 +21,9 @@ pipeline {
   }
   stages {
     stage('Lib test') {
-      printenv
+      steps {
+        printenv()
+      }
     }
     stage('Init') {
       steps {
