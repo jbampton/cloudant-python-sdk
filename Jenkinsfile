@@ -1,5 +1,7 @@
 #!groovy
 
+library 'integrations-pipeline@70-override-pipeline'
+
 pipeline {
   agent {
     label 'sdks-executor'
@@ -18,6 +20,11 @@ pipeline {
     ARTIFACTORY_URL_DOWN = "${Artifactory.server('taas-artifactory').getUrl()}"
   }
   stages {
+    stage('Lib test') {
+      steps {
+        printenv
+      }
+    }
     stage('Init') {
       steps {
         script {
