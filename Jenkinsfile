@@ -1,6 +1,8 @@
 #!groovy
 
-@Library('integrations-pipeline@70-override-pipeline') _
+libraries {
+     lib('integrations-pipeline@70-override-pipeline')
+}
 
 pipeline {
   agent {
@@ -69,6 +71,9 @@ pipeline {
       }
     }
     stage('Publish[staging]') {
+      when {
+        branch 'main'
+      }
       environment {
         STAGE_ROOT = "${ARTIFACTORY_URL_UP}/api/"
       }
@@ -92,6 +97,9 @@ pipeline {
       }
     }
     stage('Run Gauge tests') {
+      when {
+        branch 'main'
+      }
       steps {
         script {
             buildResults = null
