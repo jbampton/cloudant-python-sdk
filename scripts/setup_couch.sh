@@ -2,7 +2,8 @@
 
 set -ev
 
-printenv | grep "^SERVER_" > cloudant.env
+# Note: cloudant_v1 is specific to Python
+printenv | grep "^SERVER_" | tee cloudant.env cloudant_v1.env
 # if you change the image version please regenerate example output captures
 docker start couchdb || docker run --name couchdb --rm -e COUCHDB_USER="$SERVER_USERNAME" -e COUCHDB_PASSWORD="$SERVER_PASSWORD" -p 5984:5984 -d apache/couchdb:3
 # shellcheck disable=SC2016

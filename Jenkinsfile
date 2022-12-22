@@ -39,7 +39,10 @@ pipeline {
           'SERVER_AUTH_TYPE=basic',
           'SERVER_URL=http://127.0.0.1:5984',
           'WIREMOCK_URL=http://127.0.0.1:8080',
-          'WIREMOCK_PORT=8080'
+          'WIREMOCK_PORT=8080',
+          'CLOUDANT_AUTH_TYPE=basic',
+          'CLOUDANT_USERNAME=admin',
+          'CLOUDANT_PASSWORD=pass'
         ]) {
           withCredentials([
             usernamePassword(credentialsId: 'container-test-server',
